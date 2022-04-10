@@ -20,6 +20,12 @@ class Termin{
          $query = "SELECT * FROM termin";
          return $conn->query($query);
      }
+
+     public static function prikaziPremaZanimanju($zaposleni, mysqli $conn)
+     {
+        $query = "SELECT * FROM termin WHERE zaposleni IN (SELECT id FROM zaposleni WHERE tip_zaposlenog = (SELECT tip_zaposlenog FROM zaposleni WHERE id=$zaposleni))";
+        return $conn->query($query);
+     }
  
      public static function nadjiTermin($id, mysqli $conn){
          $query = "SELECT * FROM termin WHERE id=$id";

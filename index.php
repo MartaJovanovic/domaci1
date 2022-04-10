@@ -4,11 +4,12 @@ require "dbBroker.php";
 require "zaposleni.php";
 
 session_start();
-if(isset($_POST['ime']) && isset($_POST['sifra'])){
+if(isset($_POST['id']) && isset($_POST['ime']) && isset($_POST['sifra'])){
+    $kid = $_POST['id'];
     $kime = $_POST['ime'];
     $ksifra = $_POST['sifra'];
 
-    $korisnik = new Zaposleni(4,$kime, $ksifra);
+    $korisnik = new Zaposleni($kid,$kime, $ksifra);
     $odg = Zaposleni::logInZaposleni($korisnik, $conn);
 
 
@@ -43,6 +44,9 @@ if(isset($_POST['ime']) && isset($_POST['sifra'])){
         <div class="main-div">
             <form method="POST" action="#">
                 <div class="container">
+                <label class="id">ID</label>
+                    <input type="text" name="id" class="form-control"  required>
+                    <br>
                     <label class="ime">Korisnicko ime</label>
                     <input type="text" name="ime" class="form-control"  required>
                     <br>
