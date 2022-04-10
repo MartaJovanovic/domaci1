@@ -6,7 +6,7 @@ class Zaposleni{
     public $sifra;
     public $tip_zaposlenog;
 
-    public function __construct($ime=null,$sifra=null,$tip_zaposlenog=null,$id=null)
+    public function __construct($id=null,$ime=null,$sifra=null,$tip_zaposlenog=null)
     {
         $this->id = $id;
         $this->ime = $ime;
@@ -16,7 +16,7 @@ class Zaposleni{
 
     public static function logInZaposleni($koris, mysqli $conn)
     {
-        $query = "SELECT * FROM user WHERE ime='$koris->ime' and sifra='$koris->sifra'";
+        $query = "SELECT * FROM zaposleni WHERE ime='$koris->ime' and sifra='$koris->sifra'";
         return $conn->query($query);
     }
 }

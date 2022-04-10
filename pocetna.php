@@ -8,7 +8,7 @@ if (!isset($_SESSION['korisnik_id'])) {
     exit();
 }
 
-/*$podaci = Prijava::getAll($conn);
+$podaci = Prijava::getAll($conn);
 if (!$podaci) {
     echo "Nastala je greška pri preuzimanju podataka";
     die();
@@ -17,7 +17,7 @@ if ($podaci->num_rows == 0) {
     echo "Nema prijava na kolokvijume";
     die();
 } else {
-*/
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">

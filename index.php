@@ -9,27 +9,14 @@ if(isset($_POST['ime']) && isset($_POST['sifra'])){
     $ksifra = $_POST['sifra'];
 
     $korisnik = new Zaposleni(4,$kime, $ksifra);
-    $odg = Zaposleni::logInZaposlemi($korisnik, $conn);
+    $odg = Zaposleni::logInZaposleni($korisnik, $conn);
 
 
-
-    if($odg->num_rows==1){
-        echo "PRIJAVILI STE SE";
-    }else{
-        echo "NISTE STE SE";
-
-    }
-
-
-  /* if($odg->num_rows==1){
-        echo  `
-        <script>
-        console.log( "Uspešno ste se prijavili");
-        </script>
-        `;
-        echo "PRIJAVILI STE SE";
+   if($odg->num_rows==1){
         $_SESSION['korisnik_id'] = $korisnik->id;
+        ob_start();
         header('Location: pocetna.php');
+        ob_end_flush();
         exit();
     }else{
         echo `
@@ -38,9 +25,7 @@ if(isset($_POST['ime']) && isset($_POST['sifra'])){
         </script>
         `;
 
-        echo "NISTE STE SE";
-
-    }*/
+    }
 }
 
 ?>
@@ -54,16 +39,16 @@ if(isset($_POST['ime']) && isset($_POST['sifra'])){
 
 </head>
 <body>
-    <div class="login-form">
+<div class="login-form">
         <div class="main-div">
             <form method="POST" action="#">
                 <div class="container">
-                    <label class="username">Korisnicko ime</label>
-                    <input type="text" name="username" class="form-control"  required>
+                    <label class="ime">Korisnicko ime</label>
+                    <input type="text" name="ime" class="form-control"  required>
                     <br>
                     <label for="password">Lozinka</label>
-                    <input type="password" name="password" class="form-control" required>
-                    <button type="submit" class="btn btn-primary" onclick="sortTable()" name="submit">Prijavi se</button>
+                    <input type="password" name="sifra" class="form-control" required>
+                    <button type="submit" class="btn btn-primary" name="submit">Prijavi se</button>
                 </div>
 
             </form>
@@ -71,11 +56,6 @@ if(isset($_POST['ime']) && isset($_POST['sifra'])){
 
         
     </div>
-    <script>
-        function sortTable() {
-            
-        }
-        </script>
 
 
 
