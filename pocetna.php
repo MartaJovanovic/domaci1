@@ -112,10 +112,6 @@ if ($termin->num_rows == 0) {
 
                 </div>
 
-                <div class="dugme">
-                    <button id="btn-obrisi" class="btn" data-toggle="modal" data-target="#brisanjeZ">Obrisi zaposlenog</button>
-                </div>
-
                 <div>
                 <input type="text" id="pretraga" onkeyup="funkcijaZaPretragu()" placeholder="Pretrazi po imenu">
                 <button id="btn-pretraga" class="btn"> Pretrazi </button>
@@ -235,7 +231,9 @@ if ($termin->num_rows == 0) {
     </div>
 
 
-    <div class="modal fade" id="brisanjeZ" role="dialog">
+
+
+    <div class="modal fade" id="brisanjeT" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -243,16 +241,16 @@ if ($termin->num_rows == 0) {
                 </div>
                 <div class="modal-body">
                     <div class="container prijava-form">
-                        <form action="#" method="post" id="brisanjeZaposlenog">
-                            <h3 style="color: black; text-align: center">Obrisi Zaposlenog</h3>
+                        <form action="#" method="post" id="brisanjeTermina">
+                            <h3 style="color: black; text-align: center">Izbrisi termin</h3>
                             <div class="row">
                                 <div class="col-md-11 ">
                                     <div class="form-group">
                                         <label for="">ID</label>
-                                        <input type="text" name="id" class="form-control" />
+                                        <input type="text" style="border: 1px solid black" name="id1" class="form-control" />
                                     </div>
                                     <div class="form-group">
-                                        <button id="btnObrisiZ" input type="submit" class="btn" >Obrisi</button>
+                                        <button id="btnIzbrisiT" input type="submit" class="btn" >Obrisi</button>
                                     </div>
                                 </div>
                             </div>
@@ -265,10 +263,6 @@ if ($termin->num_rows == 0) {
 
 
     </div>
-
-
-
-
 
     <div class="modal fade" id="dodavanjeT" role="dialog">
         <div class="modal-dialog">
@@ -414,7 +408,7 @@ if ($termin->num_rows == 0) {
 
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
 </body>

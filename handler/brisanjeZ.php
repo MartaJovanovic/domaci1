@@ -6,9 +6,7 @@ require "../zaposleni.php";
 
 if(isset($_POST['id'])) 
 {
-    $obj = new Zaposleni($_POST['id']);
-    
-    $status = $obj->deleteById($conn);
+    $status = Zaposleni::izbrisiZaposlenog($_POST['id']),$conn);
 
     if($status){
         echo 'Success';

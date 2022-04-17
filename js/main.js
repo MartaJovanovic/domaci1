@@ -80,9 +80,8 @@ $('#izmeniZ').submit(function(){
 });
 
 
-$('#brisanjeZaposlenog').submit(function(){
-
-
+$('#brisanjeTermina').submit(function(){
+    console.log("Da li si stigla do ovde?");
     event.preventDefault();
     console.log("Brisanje");
     const $form =$(this);
@@ -94,20 +93,20 @@ $('#brisanjeZaposlenog').submit(function(){
     $input.prop('disabled', true);
 
     req = $.ajax({
-        url: 'handler/brisanjeZ.php',
+        url: 'handler/brisanjeT.php',
         type:'post',
         data: serijalizacija
     });
 
     req.done(function(res, textStatus, jqXHR){
         if(res=="Success"){
-            alert("Zaposlen je obrisan");
+            alert("Termin OBRISAN");
             location.reload(true);
         }else if (res == "Failed"){
-            alert("Zaposlen NIJE obrisan");
+            alert("Termin NIJE obrisan");
         }
         else {
-            alert("Zaposlen NIJE");
+            alert("Termin NIJE");
         }
         console.log(res);
     });
