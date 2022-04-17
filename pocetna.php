@@ -375,7 +375,7 @@ if ($termin->num_rows == 0) {
                     var d2=new Date(b[2],(b[1]-1),b[0]);
                   
 
-                   if( (d1.getTime() < d2.getTime())) {
+                   if( (d1.getTime() > d2.getTime())) {
                         shouldSwitch = true;
                         break;
                     }
