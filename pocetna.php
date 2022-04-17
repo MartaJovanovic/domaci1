@@ -81,9 +81,9 @@ if ($termin->num_rows == 0) {
             <table id="tabela1" class="table table-hover table-striped">
                 <thead class="thead">
                     <tr>
-                        <th scope="col">Usluga</th>
-                        <th scope="col">Vreme</th>
-                        <th scope="col">Sifra zaposlenog</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Ime</th>
+                        <th scope="col">Tip</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -93,7 +93,7 @@ if ($termin->num_rows == 0) {
                         <tr>
                             <td><?php echo $red["id"] ?></td>
                             <td><?php echo $red["ime"] ?></td>
-                            <td><?php echo $red["sifra"] ?></td>
+                            <td><?php echo $red["tip_zaposlenog"] ?></td>
                         </tr>
                         <?php
                     endwhile;
@@ -116,6 +116,11 @@ if ($termin->num_rows == 0) {
                     <button id="btn-obrisi" class="btn" data-toggle="modal" data-target="#brisanjeZ">Obrisi zaposlenog</button>
                 </div>
 
+                <div>
+                <input type="text" id="pretraga" onkeyup="funkcijaZaPretragu()" placeholder="Pretrazi po imenu">
+                <button id="btn-pretraga" class="btn"> Pretrazi </button>
+            </div>
+
             </div>
             <?php
             }
@@ -137,9 +142,8 @@ if ($termin->num_rows == 0) {
                 </div>
 
                 <div class="dugme" >
-                    <button id="btn-sortiraj" class="btn btn-normal" onClick="sortiranjeDatum()">Sortiraj po datumu</button>
+                    <button id="btn-sortiraj" class="btn" onClick="sortiranjeDatum()">Sortiraj po datumu</button>
                 </div>
-
             </div>
             <?php
             }
@@ -379,9 +383,6 @@ if ($termin->num_rows == 0) {
                         shouldSwitch = true;
                         break;
                     }
-                    else {
-                        console.log("ovde");
-                    }
                 }
 
                 if (shouldSwitch) {
@@ -393,12 +394,12 @@ if ($termin->num_rows == 0) {
 
         function funkcijaZaPretragu() {
             var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("myInput");
+            input = document.getElementById("pretraga");
             filter = input.value.toUpperCase();
-            table = document.getElementById("myTable");
+            table = document.getElementById("tabela1");
             tr = table.getElementsByTagName("tr");
             for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0];
+                td = tr[i].getElementsByTagName("td")[1];
                 if (td) {
                     txtValue = td.textContent || td.innerText;
                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
