@@ -19,6 +19,21 @@ class Zaposleni{
         $query = "SELECT * FROM zaposleni WHERE ime='$koris->ime' and sifra='$koris->sifra'";
         return $conn->query($query);
     }
+
+    public static function dodajZaposlenog(Zaposleni $zaposleni, mysqli $conn)
+    {
+        $query = "INSERT INTO zaposleni(ime, sifra, tip_zaposlenog) VALUES('$zaposleni->ime','$zaposleni->sifra','$zaposleni->tip_zaposlenog')";
+        return $conn->query($query);
+    }
+
+    public static function prikaziZ(mysqli $conn)
+     {
+         $query = "SELECT * FROM zaposleni";
+         return $conn->query($query);
+     }
+
+    
+
 }
 
 
