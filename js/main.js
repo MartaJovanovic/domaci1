@@ -39,3 +39,43 @@ $('#btnDodajZ').submit(function () {
     $('#dodavanjeZ').modal('toggle');
     return false;
 });
+
+
+
+$('#izmeniZ').submit(function(){
+
+
+    event.preventDefault();
+    console.log("Izmena");
+    const $form =$(this);
+    const $input = $form.find('input, select, button, textarea');
+
+    const serijalizacija = $form.serialize();
+    console.log(serijalizacija);
+
+    $input.prop('disabled', true);
+
+    req = $.ajax({
+        url: 'handler/izmenaZ.php',
+        type:'post',
+        data: serijalizacija
+    });
+
+    req.done(function(res, textStatus, jqXHR){
+        if(res=="Success"){
+            alert("Zaposlen izmenjen");
+            location.reload(true);
+        }else if (res == "Failed"){
+            alert("Zaposlen NIJE izmenjen");
+        }
+        else {
+            alert("Zaposlen NIJE");
+        }
+        console.log(res);
+    });
+
+    req.fail(function(jqXHR, textStatus, errorThrown){
+        console.error('Sledeca greska se desila> '+textStatus, errorThrown)
+    });
+});
+

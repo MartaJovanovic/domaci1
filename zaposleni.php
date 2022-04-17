@@ -32,6 +32,12 @@ class Zaposleni{
          return $conn->query($query);
      }
 
+     public static function azuriranjeZaposlenog($koris, mysqli $conn)
+     {
+         $query = "UPDATE zaposleni set ime='$koris->ime',sifra='$koris->sifra' , tip_zaposlenog='$koris->tip_zaposlenog' WHERE id='$koris->id'";
+         return $conn->query($query);
+     }
+
     
 
 }
