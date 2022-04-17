@@ -38,6 +38,12 @@ class Zaposleni{
          return $conn->query($query);
      }
 
+     public static function izbrisiZaposlenog($id1, mysqli $conn)
+     {
+         $query = "DELETE FROM zaposleni WHERE id='$id1'";
+         return $conn->query($query);
+     }
+
     
 
 }

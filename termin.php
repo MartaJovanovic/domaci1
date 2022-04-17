@@ -42,17 +42,17 @@ class Termin{
      }
 
  
-     public function izbrisiTermin(mysqli $conn)
+     public static function izbrisiTermin($id1, mysqli $conn)
      {
-         $query = "DELETE FROM termin WHERE id=$this->id";
+         $query = "DELETE FROM termin WHERE id=$id1";
          return $conn->query($query);
      }
  
     
-     public function azuriranjeTermina($id, mysqli $conn)
+     public static  function azuriranjeTermina($termin, mysqli $conn)
      {
-         $query = "UPDATE termin set usluga = $this->uskuga,vreme = $this->vreme,zaposleni = $this->zaposleni WHERE id=$id";
-         return $conn->query($query);
+        $query = "UPDATE termin set usluga='$termin->usluga',vreme='$termin->vreme',zaposleni='$termin->zaposleni' WHERE id='$termin->id'";
+        return $conn->query($query);
      }
  
     

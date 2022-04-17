@@ -79,3 +79,120 @@ $('#izmeniZ').submit(function(){
     });
 });
 
+
+$('#brisanjeZaposlenog').submit(function(){
+
+
+    event.preventDefault();
+    console.log("Brisanje");
+    const $form =$(this);
+    const $input = $form.find('input, select, button, textarea');
+
+    const serijalizacija = $form.serialize();
+    console.log(serijalizacija);
+
+    $input.prop('disabled', true);
+
+    req = $.ajax({
+        url: 'handler/brisanjeZ.php',
+        type:'post',
+        data: serijalizacija
+    });
+
+    req.done(function(res, textStatus, jqXHR){
+        if(res=="Success"){
+            alert("Zaposlen je obrisan");
+            location.reload(true);
+        }else if (res == "Failed"){
+            alert("Zaposlen NIJE obrisan");
+        }
+        else {
+            alert("Zaposlen NIJE");
+        }
+        console.log(res);
+    });
+
+    req.fail(function(jqXHR, textStatus, errorThrown){
+        console.error('Sledeca greska se desila> '+textStatus, errorThrown)
+    });
+});
+
+
+$('#dodajTermin').submit(function(){
+
+
+    event.preventDefault();
+    console.log("Dodavanje");
+    const $form =$(this);
+    const $input = $form.find('input, select, button, textarea');
+
+    const serijalizacija = $form.serialize();
+    console.log(serijalizacija);
+
+    $input.prop('disabled', true);
+
+    req = $.ajax({
+        url: 'handler/dodajT.php',
+        type:'post',
+        data: serijalizacija
+    });
+
+    req.done(function(res, textStatus, jqXHR){
+        if(res=="Success"){
+            alert("Termin DODAT");
+            location.reload(true);
+        }else if (res == "Failed"){
+            alert("Termin NIJE DODAT");
+        }
+        else {
+            alert("Termin NIJE");
+        }
+        console.log(res);
+    });
+
+    req.fail(function(jqXHR, textStatus, errorThrown){
+        console.error('Sledeca greska se desila> '+textStatus, errorThrown)
+    });
+});
+
+$('#btnDodajT').submit(function () {
+    $('#dodavanjeT').modal('toggle');
+    return false;
+});
+
+$('#izmeniT').submit(function(){
+
+
+    event.preventDefault();
+    console.log("Izmena");
+    const $form =$(this);
+    const $input = $form.find('input, select, button, textarea');
+
+    const serijalizacija = $form.serialize();
+    console.log(serijalizacija);
+
+    $input.prop('disabled', true);
+
+    req = $.ajax({
+        url: 'handler/izmeniT.php',
+        type:'post',
+        data: serijalizacija
+    });
+
+    req.done(function(res, textStatus, jqXHR){
+        if(res=="Success"){
+            alert("Termin izmenjen");
+            location.reload(true);
+        }else if (res == "Failed"){
+            alert("Termin NIJE izmenjen");
+        }
+        else {
+            alert("Termin NIJE");
+        }
+        console.log(res);
+    });
+
+    req.fail(function(jqXHR, textStatus, errorThrown){
+        console.error('Sledeca greska se desila> '+textStatus, errorThrown)
+    });
+});
