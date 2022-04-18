@@ -35,8 +35,8 @@ if(isset($_POST['id']) && isset($_POST['ime']) && isset($_POST['sifra'])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css">
-    <title>FON: Zakazivanje kolokvijuma</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>SALON</title>
 
 </head>
 <body>
