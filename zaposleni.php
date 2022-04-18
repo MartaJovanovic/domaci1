@@ -44,6 +44,21 @@ class Zaposleni{
          return $conn->query($query);
      }
 
+     public static function nadjiZaposlenog($id1, mysqli $conn){
+        $query = "SELECT * FROM zaposleni WHERE id='$id1'";
+
+        $myObj = array();
+        if($msqlObj = $conn->query($query)){
+            while($red = $msqlObj->fetch_array(1)){
+                $myObj[]= $red;
+            }
+        }
+
+        return $myObj;
+
+    }
+
+
     
 
 }

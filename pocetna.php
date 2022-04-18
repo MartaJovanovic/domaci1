@@ -63,11 +63,11 @@ if ($termin->num_rows == 0) {
                     <?php
                     while ($red = $termin->fetch_array()) :
                     ?>
-                        <tr>
+                        <tr class="thr" onclick='trclick(this);'>
                             <td><?php echo $red["id"] ?></td>
                             <td><?php echo $red["usluga"] ?></td>
                             <td><?php echo $red["vreme"] ?></td>
-                            <td><?php echo $red["zaposleni"] ?></td>
+                            <td ><?php echo $red["zaposleni"] ?></td>
                         </tr>
                         <?php
                     endwhile;
@@ -350,7 +350,55 @@ if ($termin->num_rows == 0) {
     </div>
 
 
+    <p id="ime_zaposlenog"></p>
+
+
     <script>
+
+function createCookie(naziv, vrednost, days) {
+    var expires;
+      
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toGMTString();
+    }
+    else {
+        expires = "";
+    }
+      
+    document.cookie = escape(naziv) + "=" + 
+        escape(vrednost) + expires + "; path=/";
+}
+
+        
+        
+        function trclick(x){
+          var id_n = x.getElementsByTagName("TD")[3].innerHTML;
+          document.getElementById("ime_zaposlenog").innerHTML = id_n;
+          $(document).ready(function () { 
+              createCookie("ime_Z", id_n, "10");});
+
+              var i = '<?php $mime = Zaposleni::nadjiZaposlenog($_COOKIE["ime_Z"],$conn);
+             $imeZ = $mime[0]['ime'];
+             echo $imeZ;?>'
+            
+        document.getElementById("ime_zaposlenog").innerHTML = i;
+        $(document).ready(function () { 
+              eraseCookie("ime_Z");});
+
+        };
+
+        function vratiIme(){
+           
+        }
+
+        function eraseCookie(c_name) {
+            createCookie(c_name,"",-1);
+        }
+    
+
+
         function sortiranjeDatum() {
             var table, rows, switching, i, x, y, shouldSwitch;
             table = document.getElementById("tabela");
