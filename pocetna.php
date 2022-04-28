@@ -242,7 +242,7 @@ if ($termin->num_rows == 0) {
                 <div class="modal-body">
                     <div class="container prijava-form">
                         <form action="#" method="post" id="brisanjeTermina">
-                            <h3 style="color: black; text-align: center">Izbrisi termin</h3>
+                            <h3 style="color: black;">Izbrisi termin</h3>
                             <div class="row">
                                 <div class="col-md-11 ">
                                     <div class="form-group">
@@ -273,7 +273,7 @@ if ($termin->num_rows == 0) {
                 <div class="modal-body">
                     <div class="container prijava-form">
                         <form action="#" method="post" id="dodajTermin">
-                            <h3 style="color: black; text-align: center">Dodaj Termin</h3>
+                            <h3 style="color: black;">Dodaj Termin</h3>
                             <div class="row">
                                 <div class="col-md-11 ">
                                     <div class="form-group">
